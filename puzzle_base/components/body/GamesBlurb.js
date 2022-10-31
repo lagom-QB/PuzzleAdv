@@ -134,7 +134,9 @@ const GameSection = styled.div`
     width: 60vw;
     height: 60vh;
     touch-action: auto;
-    margin: 0 auto;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
     canvas:not(:first-child) {
       display: none;
     }
@@ -155,6 +157,7 @@ const GameSection = styled.div`
     transform: scale(0.1);
     width: 2rem;
     opacity: 0.2;
+    cursor: pointer;
     &:hover {
       transform: scale(0.4);
       opacity: 1;
@@ -195,7 +198,6 @@ function GameSelected() {
   let gameImg = "https://source.unsplash.com/random/800x800/?img=1";
   const [message, setMessage] = useState("Build the Puzzle"),
     [hintText, setHintText] = useState("Hint Off"),
-    [showComponent, setShowComponent] = useState(false),
     [showHint, setShowHint] = useState(false),
     [pu, setPu] = useState(null),
     [gameStats, setGameStats] = useState([null, null, null]);
@@ -208,19 +210,19 @@ function GameSelected() {
         x: variableDiff === 1 ? 3 : variableDiff === 2 ? 5 : 7,
         y: variableDiff === 1 ? 3 : variableDiff === 2 ? 5 : 7,
       },
-      attraction: 20, // distance to snap pieces
+      attraction: 2, // distance to snap pieces
       aligned: true, // don't overlap pieces on start
-      zoom: 0.4, // initial zoom of context
-      beforeInit: (canvas) => {},
+      /*zoom: 0.3, // initial zoom of context
+       beforeInit: (canvas) => {},
+      onChange: (state) => {}, */
       onInit: (state) => {
-        p.centralize();
+        alert("You are able to scroll within the puzzle space!");
       },
-      onChange: (state) => {},
       onComplete: (state) => {
         winnerMessage();
         const results = [
           state.puzzle.moves,
-          state.puzzle.startTime,
+          state.puzzle.startTime.toLocaleTimeString("en-US"),
           new Date().toLocaleTimeString("en-US"),
         ];
         setGameStats(results);
@@ -249,11 +251,11 @@ function GameSelected() {
   const winnerMessage = () => {
     console.log("Game over");
     setMessage("You Won!");
-  };
+  };//✅
   const handleHintClickEvent = () => {
     setShowHint(!showHint);
-    setHintText(showHint ? "Hint Off" : "Hint On");
-  };
+    setHintText(showHint ? "Hint Off 🤐" : "Hint On ☀️");
+  };//✅
 
   /* -------------------- */
   return (
@@ -262,34 +264,30 @@ function GameSelected() {
         {message}
       </HeroContext>
 
-      {showComponent ? (
-        <GameyGame />
-      ) : (
-        <>
-          <GameContainer>
-            <h3 style={{ opacity: 0.2 }}>
-              {variableDiff === 1 ? 3 : variableDiff === 2 ? 5 : 7}x
-              {variableDiff === 1 ? 3 : variableDiff === 2 ? 5 : 7}
-            </h3>
-            <SideBySide>
-              <Jigsaw id="puzzle" />
-              {showHint ? (
-                <HintImg>
-                  <img src={gameImg} alt="game" />
-                </HintImg>
-              ) : null}
-            </SideBySide>
-          </GameContainer>
-          <ResetContainer>
-            <GameButton onClick={handleHintClickEvent}>
-              <h5>{hintText}</h5>
-            </GameButton>
-            <GameButton onClick={handleClickEvent}>
-              <h5>Reset</h5>
-            </GameButton>
-          </ResetContainer>
-        </>
-      )}
+      <>
+        <GameContainer>
+          <h3 style={{ opacity: 0.2 }}>
+            {variableDiff === 1 ? 3 : variableDiff === 2 ? 5 : 7}x
+            {variableDiff === 1 ? 3 : variableDiff === 2 ? 5 : 7}
+          </h3>
+          <SideBySide>
+            <Jigsaw id="puzzle" />
+            {showHint ? (
+              <HintImg>
+                <img src={gameImg} alt="game" />
+              </HintImg>
+            ) : null}
+          </SideBySide>
+        </GameContainer>
+        <ResetContainer>
+          <GameButton onClick={handleHintClickEvent}>
+            <h5>{hintText}</h5>
+          </GameButton>
+          <GameButton onClick={handleClickEvent}>
+            <h5>Reset</h5>
+          </GameButton>
+        </ResetContainer>
+      </>
     </GameSection>
   );
 }
