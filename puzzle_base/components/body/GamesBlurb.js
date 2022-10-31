@@ -272,10 +272,7 @@ function GameSelected() {
               {variableDiff === 1 ? 3 : variableDiff === 2 ? 5 : 7}
             </h3>
             <SideBySide>
-              <Jigsaw
-                id="puzzle"
-                style={{ width: "60%", height: 700, backgroundColor: "grey" }}
-              />
+              <Jigsaw id="puzzle" />
               {showHint ? (
                 <HintImg>
                   <img src={gameImg} alt="game" />
