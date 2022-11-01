@@ -7,16 +7,17 @@ import { useAboutQuery } from "./fetchers/About";
 
 // Styles ------
 const AboutText = styled.h2`
-    font-size: 1.6rem;
-    font-weight: 150;
+    font-size: 1.8rem;
+    font-weight: 300;
     line-height: 2.5rem;
   `,
   CallText = styled.h2`
     font-weight: 100;
     font-size: 1.33rem;
     white-space: pre-wrap;
-    width: 70vw;
-    bottom: -20%;
+    width: 33vw;
+    bottom: -5%;
+    left: -20vw;
     position: absolute;
   `,
   HeroContext = styled.h2`
@@ -127,6 +128,7 @@ function FootBlurb() {
     </EntryText>
   );
 }
+function LogoImage() {} //TODO::
 function AboutUsText() {
   const { loading, error, data } = useAboutQuery();
 
@@ -163,7 +165,7 @@ function AboutContent() {
     <Container>
       <AboutUsText />
       <CallBlurb />
-      <FootBlurb />
+      {/* <FootBlurb /> */}
     </Container>
   );
 }

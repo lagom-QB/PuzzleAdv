@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import GamesContent from "../components/body/GamesBlurb";
 
 const Container = styled.div`
   max-height: 100vh;
@@ -10,11 +9,7 @@ const Container = styled.div`
 /* Insert into the contact schema of the CMS */
 
 function ContactPage() {
-  return (
-    <Container>
-      <GamesContent />
-    </Container>
-  );
+  return <Container></Container>;
 }
 
 export default ContactPage;
