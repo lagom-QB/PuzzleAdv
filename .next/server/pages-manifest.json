@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/Games": "pages/Games.js",
-  "/HTP": "pages/HTP.js"
+  "/About": "pages/About.js",
+  "/": "pages/index.js"
 }

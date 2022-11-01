@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 
 import styles from "./ComponentStyles/Header.module.css";
@@ -6,10 +5,11 @@ import styled from "styled-components";
 
 // Styles ------
 const ATag = styled.a`
-  color: rgb(192, 188, 188);
+  color: rgb(0, 0, 0);
   &:hover {
-    color: rgb(255, 255, 255, 100%);
+    color: rgb(255, 0, 0, 100%);
     transform: scale(1.2);
+    text-decoration: underline;
   }
 `;
 // -------------
